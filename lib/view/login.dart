@@ -36,11 +36,10 @@ class _LoginState extends State<Login> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      backgroundColor: Color.fromARGB(197, 219, 38, 63),
+      backgroundColor: const Color.fromARGB(197, 219, 38, 63),
       appBar: AppBar(
-        elevation: 0.0,
-        backgroundColor: Colors.blueAccent,
-      ),
+          elevation: 0.0,
+          backgroundColor: const Color.fromARGB(197, 219, 38, 63)),
       body: SingleChildScrollView(
         child: Container(
           padding: const EdgeInsets.all(8),
@@ -112,7 +111,8 @@ class _LoginState extends State<Login> {
               ActionButton(
                 text: 'SIGN IN',
                 func: () {
-                  Future.delayed(Duration(seconds: 2), () {
+                  //print('asd');
+                  Future.delayed(const Duration(seconds: 2), () {
                     Get.to(() => const SecondPage());
                   });
                 },
