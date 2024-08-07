@@ -2,7 +2,6 @@
 
 import 'package:ecommerce_checkout/constants/colors.dart';
 import 'package:ecommerce_checkout/view/SecondScreen.dart';
-import 'package:ecommerce_checkout/custom_widgets/actionButton.dart';
 import 'package:ecommerce_checkout/custom_widgets/customtext.dart';
 import 'package:ecommerce_checkout/custom_widgets/epass_login.dart';
 import 'package:ecommerce_checkout/view/socialLoginButton.dart';
@@ -20,17 +19,11 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   // Correct: use initState for initialization that may require setState later
-  //   WidgetsBinding.instance.addPostFrameCallback((_) {
-  //     // Safe to call setState here
-  //     setState(() {
-  //       Get.to(() => const SecondPage());
-  //     });
-  //   });
-  // }
+  void _moveToSecondPage() {
+    setState(() {
+      Get.to(() => const SecondPage());
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -108,15 +101,13 @@ class _LoginState extends State<Login> {
                 height: 10,
               ),
               //----------------------------------------------SIGN IN Button------------------------
-              ActionButton(
-                text: 'SIGN IN',
-                func: () {
-                  //print('asd');
-                  Future.delayed(const Duration(seconds: 2), () {
-                    Get.to(() => const SecondPage());
-                  });
-                },
-                color: Colors.white,
+              ElevatedButton(
+                onPressed: _moveToSecondPage,
+                style: const ButtonStyle(
+                  backgroundColor: WidgetStatePropertyAll(primaryColorApp),
+                ),
+                child: const custometext(
+                    text: 'Sign IN', fontsize: 15, color: Colors.white),
               ),
               const SizedBox(
                 height: 10,

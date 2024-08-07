@@ -1,6 +1,7 @@
 import 'package:ecommerce_checkout/constants/colors.dart';
 import 'package:ecommerce_checkout/custom_widgets/customtext.dart';
 import 'package:ecommerce_checkout/view/login.dart';
+import 'package:ecommerce_checkout/view_model/authViewModel.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -13,24 +14,23 @@ class SecondPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Second page'),
       ),
-      body: Center(
-          child: Column(
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          const Text('Second Screen'),
-          // ElevatedButton(
-          //   onPressed: () {
-          //     // Future.delayed(Duration.zero, () {
-          //     //   Get.to(() => Login());
-          //     // });
-          //   },
-          //   style: ButtonStyle(
-          //     backgroundColor: WidgetStatePropertyAll(primaryColorApp),
-          //   ),
-          //   child: custometext(
-          //       text: '<- Backe', fontsize: 15, color: Colors.black),
-          // ),
+          GetBuilder<AuthModelView>(
+            init: AuthModelView(),
+            builder: (value) => Text('${value.count}'),
+          ),
+          GetBuilder<AuthModelView>(
+            init: AuthModelView(),
+            builder: (value) => ElevatedButton(
+              onPressed: value.increament,
+              child: const Text('+'),
+            ),
+          ),
         ],
-      )),
+      ),
     );
   }
 }
