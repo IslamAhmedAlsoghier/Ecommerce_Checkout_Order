@@ -10,6 +10,7 @@ class SecondPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    AuthModelView authModelView = Get.put(AuthModelView());
     return Scaffold(
       appBar: AppBar(
         title: const Text('Second page'),
@@ -18,16 +19,13 @@ class SecondPage extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          GetBuilder<AuthModelView>(
+          GetX<AuthModelView>(
             init: AuthModelView(),
-            builder: (value) => Text('${value.count}'),
+            builder: (value) => Text('${value.count.value}'),
           ),
-          GetBuilder<AuthModelView>(
-            init: AuthModelView(),
-            builder: (value) => ElevatedButton(
-              onPressed: value.increament,
-              child: const Text('+'),
-            ),
+          ElevatedButton(
+            onPressed: authModelView.increament,
+            child: const Text('+'),
           ),
         ],
       ),

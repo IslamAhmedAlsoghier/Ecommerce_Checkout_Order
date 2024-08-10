@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 
 class AuthModelView extends GetxController {
-  int count = 0;
+  RxInt count = 0.obs;
   @override
   void onInit() {
     // TODO: implement onInit
@@ -22,6 +22,5 @@ class AuthModelView extends GetxController {
 
   void increament() {
     count++;
-    update();
   }
 }
