@@ -5,7 +5,7 @@ import 'package:ecommerce_checkout/view_model/authViewModel.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class SecondPage extends StatelessWidget {
+class SecondPage extends GetWidget<AuthModelView> {
   const SecondPage({Key? key}) : super(key: key);
 
   @override
@@ -19,14 +19,14 @@ class SecondPage extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          GetX<AuthModelView>(
-            init: AuthModelView(),
-            builder: (value) => Text('${value.count.value}'),
-          ),
-          ElevatedButton(
-            onPressed: authModelView.increament,
-            child: const Text('+'),
-          ),
+          // GetX<AuthModelView>(
+          //   init: AuthModelView(),
+          //   builder: (value) => Text('${value.count.value}'),
+          // ),
+          // ElevatedButton(
+          //   onPressed: authModelView.increament,
+          //   child: const Text('+'),
+          // ),
         ],
       ),
     );

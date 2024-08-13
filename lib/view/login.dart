@@ -5,25 +5,15 @@ import 'package:ecommerce_checkout/view/SecondScreen.dart';
 import 'package:ecommerce_checkout/custom_widgets/customtext.dart';
 import 'package:ecommerce_checkout/custom_widgets/epass_login.dart';
 import 'package:ecommerce_checkout/view/socialLoginButton.dart';
+import 'package:ecommerce_checkout/view_model/authViewModel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 //mport 'package:get/get.dart';
 //import 'package:get/get.dart';
 
-class Login extends StatefulWidget {
-  Login({Key? key}) : super(key: key);
-
-  @override
-  State<Login> createState() => _LoginState();
-}
-
-class _LoginState extends State<Login> {
-  void _moveToSecondPage() {
-    setState(() {
-      Get.to(() => const SecondPage());
-    });
-  }
+class Login extends GetWidget<AuthModelView> {
+  const Login({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -102,7 +92,7 @@ class _LoginState extends State<Login> {
               ),
               //----------------------------------------------SIGN IN Button------------------------
               ElevatedButton(
-                onPressed: _moveToSecondPage,
+                onPressed: () {},
                 style: const ButtonStyle(
                   backgroundColor: WidgetStatePropertyAll(primaryColorApp),
                 ),
@@ -110,27 +100,57 @@ class _LoginState extends State<Login> {
                     text: 'Sign IN', fontsize: 15, color: Colors.white),
               ),
               const SizedBox(
-                height: 10,
+                height: 20,
               ),
               const custometext(
                 text: '-OR-',
                 fontsize: 20,
                 // fontweight: FontWeight.bold,
               ),
-              // const SizedBox(
-              //   height: 10,
-              // ),
-              SocialLogin(
-                  text: 'Sign in with Facebook',
-                  imageName: 'assets/F.png',
-                  onPress: () {}),
+              const SizedBox(
+                height: 40,
+              ),
+              //-------------------------------------Sign in with Facebook--------------------------
+              ElevatedButton(
+                onPressed: () {},
+                child: Row(
+                  children: [
+                    Container(
+                        height: 50,
+                        width: 50,
+                        child: Image.asset('assets/F.png')),
+                    const SizedBox(width: 70),
+                    const custometext(
+                      text: 'Sign in with Facebook',
+                      fontsize: 14,
+                      fontweight: FontWeight.bold,
+                    )
+                  ],
+                ),
+              ),
               const SizedBox(
                 height: 10,
               ),
-              SocialLogin(
-                  text: 'Sign in with Google',
-                  imageName: 'assets/G.png',
-                  onPress: () {})
+              //-------------------------------------Sign in with Google--------------------------
+              ElevatedButton(
+                onPressed: () {
+                  controller.googleSignIn();
+                },
+                child: Row(
+                  children: [
+                    Container(
+                        height: 50,
+                        width: 50,
+                        child: Image.asset('assets/G.png')),
+                    const SizedBox(width: 70),
+                    const custometext(
+                      text: 'Sign in with Google',
+                      fontsize: 14,
+                      fontweight: FontWeight.bold,
+                    )
+                  ],
+                ),
+              )
             ],
           ),
         ),
